@@ -8,7 +8,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("Instagram", callback_data='send_instagram')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text('OK:', reply_markup=reply_markup)
+    await update.message.reply_text('Instagram Downdoader', reply_markup=reply_markup)
 
 async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
@@ -27,4 +27,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
