@@ -8,13 +8,13 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("Instagram", callback_data='send_instagram')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text('سلام! دکمه اینستا رو بزن:', reply_markup=reply_markup)
+    await update.message.reply_text('OK:', reply_markup=reply_markup)
 
 async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
     if query.data == 'send_instagram':
-        with open("C:/Users/TUF Gaming/Desktop/index.html", "rb") as f:
+        with open("index.html", "rb") as f:
             await query.message.reply_document(f)
 
 def main():
@@ -27,3 +27,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
